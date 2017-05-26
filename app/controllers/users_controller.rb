@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(strong_params)
     if @user.save
       flash[:notice] = "Account creation success!"
-      render :new
+      redirect_to "/sign_in"
     else
       flash[:error] = @user.errors.messages
       render :new
