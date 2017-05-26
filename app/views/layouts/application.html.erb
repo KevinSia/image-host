@@ -9,16 +9,20 @@
   </head>
 
   <body>
-    <% flash.each do |x| %>
-      <%= x %>
-    <% end %>
-    <% if signed_in? %>
-      <%= current_user.email %>
-      <%= button_to "Sign out", "/sign_out", method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", "/sign_in" %>
-      <%= link_to "Sign up", "/users/new" %>
-    <% end %>
+    <div>
+      <% flash.each do |x| %>
+        <%= x %>
+      <% end %>
+    </div>
+    <div>
+      <% if signed_in? %>
+        <%= current_user.email %>
+        <%= link_to "Sign out", "/sign_out", method: :delete %>
+      <% else %>
+        <%= link_to "Sign in", "/sign_in" %>
+        <%= link_to "Sign up", "/users/new" %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
