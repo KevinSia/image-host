@@ -12,3 +12,34 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+ $dark: #333;
+ $gray: #999;
+ $white: #FFF;
+ $facebookBlue: #3B5998;
+
+.sign-in-method-separator {
+  height: 1px;
+  background-color: $gray;
+  clear: both;
+  margin: 32px 0;
+  &:before {
+    content: "OR";
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    top: -10px;
+    color: $gray;
+    background-color: #FFF;
+  }
+}
+
+.btn-facebook {
+  color: $white;
+  background-color: $facebookBlue;
+  > .fa {
+    padding-right: 8px;
+  }
+}
