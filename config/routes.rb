@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   delete "sign_out", to: "sessions#destroy"
 
   root "users#index"
+
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 end

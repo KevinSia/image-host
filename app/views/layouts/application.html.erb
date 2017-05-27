@@ -20,6 +20,7 @@
         <%= link_to "Sign out", "/sign_out", method: :delete %>
       <% else %>
         <%= link_to "Sign in", "/sign_in" %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook" %>
         <%= link_to "Sign up", "/users/new" %>
       <% end %>
     </div>
