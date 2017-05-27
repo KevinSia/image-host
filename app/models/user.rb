@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
-  validates_presence_of :email
+  validates_presence_of :full_name, :email
+  validates_uniqueness_of :email
   validate :is_valid_email
 
   has_many :authentications, :dependent => :destroy
@@ -15,6 +16,7 @@ class User < ApplicationRecord
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = User.new(
+      full_name: auth_hash["extra"]["raw_info"]["name"],
       email: auth_hash["extra"]["raw_info"]["email"]
     )
     user.save!(validate: false)
