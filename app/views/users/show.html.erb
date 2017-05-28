@@ -1,0 +1,9 @@
+<h3><%= @user.full_name %></h3>
+<br>bio: <%= @user.bio || "no bio" %>
+<br>website: <%= @user.website || "no website" %>
+<br>phone: <%= @user.phone || "no phone" %>
+<br>birthday: <%= @user.birthday || "no birthday" %>
+
+<br><% if @user == current_user %>
+  <%= link_to "Edit profile", [:edit, @user] %>
+<% end %>
