@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :check_for_username, only: [:update]
+
   def new
     @user = User.new
   end
@@ -18,8 +20,23 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def edit
+    @user = helpers.current_user
+  end
+
+  def update
+    @user = helpers.current_user
+    @user.attributes = strong_params
+    if @user.save(validate: false)
+      flash[:notice] = "update success"
+    else
+      flash[:alert] = "update failed"
+    end
+    redirect_to "/"
+  end
+
   private
   def strong_params
-    params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:full_name, :username, :email, :password, :password_confirmation).delete_if { |k, v| v.empty? }
   end
 end
