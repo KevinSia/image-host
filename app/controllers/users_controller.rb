@@ -25,7 +25,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = helpers.current_user
+    @user = User.find(params[:id])
+    redirect_to "/" if @user != helpers.current_user
   end
 
   def update
