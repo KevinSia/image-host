@@ -7,5 +7,6 @@ class AddProfileDataToUsers < ActiveRecord::Migration[5.0]
       t.string :phone
       t.date   :birthday
     end
+    add_index :users, :username, unique: true
   end
 end
