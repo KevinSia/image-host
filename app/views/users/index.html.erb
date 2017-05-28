@@ -1,3 +1,20 @@
-<% @users.each do |x| %>
-  <%= x.full_name %>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Full name</td>
+      <td>Email</td>
+      <td>Username</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |x| %>
+      <tr>
+        <td><%= x.id %></td>
+        <td><%= x.full_name %></td>
+        <td><%= x.email %></td>
+        <td><%= x.username || "none" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
