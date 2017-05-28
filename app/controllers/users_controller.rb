@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = helpers.current_user
   end
@@ -37,6 +41,6 @@ class UsersController < ApplicationController
 
   private
   def strong_params
-    params.require(:user).permit(:full_name, :username, :email, :password, :password_confirmation).delete_if { |k, v| v.empty? }
+    params.require(:user).permit(:full_name, :username, :email, :password, :password_confirmation, :bio, :website, :phone, :birthday).delete_if { |k, v| v.empty? }
   end
 end

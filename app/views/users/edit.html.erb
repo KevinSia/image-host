@@ -1,0 +1,42 @@
+<%= form_for @user, html: { class: "form-horizontal" } do |f| %>
+  <div class="form-group row">
+    <%= f.label :full_name, nil, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :full_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :bio, nil, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :bio, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :website, nil, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :website, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :phone, nil, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :birthday, nil, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_field :birthday, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Update profile", class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>

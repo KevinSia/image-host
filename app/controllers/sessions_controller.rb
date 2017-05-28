@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Log in successfully"
     else
       user = User.create_with_auth_and_hash(authentication, auth_hash)
-      flash[:notice] = "First time logging in!"
+      flash[:notice] = "New user created successfully"
     end
     session[:user] = user.id
     redirect_to "/"
