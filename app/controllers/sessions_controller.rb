@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :check_for_username, only: [:destroy]
+
   def create
     user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
     if user
