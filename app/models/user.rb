@@ -1,10 +1,22 @@
 class User < ApplicationRecord
-  has_secure_password
-  validates_presence_of :full_name, :email
+  has_secure_password validations: false
+
+  validates_presence_of :password, if: :validate_password?
+  validates_confirmation_of :password, if: :validate_password?
+  validates_length_of :password, minimum: 8, maximum: 128, if: :validate_password?
+
+  validates_presence_of :full_name, :email, :authentication_type
   validates_uniqueness_of :email
+
   validate :is_valid_email
 
   has_many :authentications, :dependent => :destroy
+
+  enum authentication_type: ["email", "facebook"]
+
+  def validate_password?
+    self.authentication_type == "email"
+  end
 
   def is_valid_email
     email = self.email
@@ -17,9 +29,10 @@ class User < ApplicationRecord
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = User.new(
       full_name: auth_hash["extra"]["raw_info"]["name"],
-      email: auth_hash["extra"]["raw_info"]["email"]
+      email: auth_hash["extra"]["raw_info"]["email"],
+      authentication_type: 1
     )
-    user.save!(validate: false)
+    user.save!
     user.authentications << (authentication)
     return user
   end
