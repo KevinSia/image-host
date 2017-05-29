@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(strong_params)
+    byebug
+    @user.avatar = params[:avatar]
     if @user.save
       flash[:notice] = "Account creation success!"
       redirect_to "/sign_in"
@@ -42,6 +44,6 @@ class UsersController < ApplicationController
 
   private
   def strong_params
-    params.require(:user).permit(:full_name, :username, :email, :password, :password_confirmation, :bio, :website, :phone, :birthday).delete_if { |k, v| v.empty? }
+    params.require(:user).permit(:full_name, :username, :email, :password, :password_confirmation, :bio, :website, :phone, :birthday, :avatar).delete_if { |k, v| v.nil? || v == "" }
   end
 end

@@ -12,7 +12,7 @@
      </ul>
      <ul class="nav navbar-nav navbar-right">
        <% if signed_in? %>
-         <li><a href="#"><%= current_user.email %></a></li>
+         <li><a href="#"><%= user_avatar current_user %></a></li>
          <li><%= link_to "Sign out", "/sign_out", method: :delete %></li>
        <% else %>
          <li><a href="#" data-toggle="modal" data-target="#modal-sign-up">Sign up</a></li>
