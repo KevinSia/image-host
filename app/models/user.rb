@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   enum authentication_type: ["email", "facebook"]
 
+  mount_uploader :avatar, AvatarUploader
+
   def validate_password?
     self.authentication_type == "email"
   end
