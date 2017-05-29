@@ -11,6 +11,7 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'carrierwave', '~> 1.0'
+gem 'cloudinary'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.3'

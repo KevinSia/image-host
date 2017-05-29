@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(strong_params)
-    byebug
     @user.avatar = params[:avatar]
     if @user.save
       flash[:notice] = "Account creation success!"

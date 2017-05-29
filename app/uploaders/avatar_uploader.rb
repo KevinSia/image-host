@@ -4,15 +4,31 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
+  include Cloudinary::CarrierWave
+
+  process :convert => 'png'
+
+  version :large do
+    cloudinary_transformation width: 256, height: 256, crop: :fill
+  end
+
+  version :small do
+    cloudinary_transformation width: 48, height: 48, crop: :fill
+  end
+
+  def public_id
+    return "image-host/avatars/#{model.id}"
+  end
+
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
