@@ -1,19 +1,25 @@
-class AvatarUploader < CarrierWave::Uploader::Base
+class PostImageUploader < CarrierWave::Uploader::Base
+
+  include Cloudinary::CarrierWave
+
+  process :convert => 'png'
+  cloudinary_transformation width: 1080, height: 1080, crop: :fit
+
+  def public_id
+    "image-host/posts/#{SecureRandom.urlsafe_base64}"
+  end
+
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
+
+  def content_type_whitelist
+    /image\//
+  end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-
-  include Cloudinary::CarrierWave
-
-  process :invalidate => true
-
-  process :convert => 'png'
-  cloudinary_transformation width: 256, height: 256, crop: :fill
-
-  # def public_id
-  #   return "image-host/avatars/#{model.id}"
-  # end
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -47,13 +53,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_whitelist
-    %w(jpg jpeg gif png)
-  end
-
-  def content_type_whitelist
-    /image\//
-  end
+  # def extension_whitelist
+  #   %w(jpg jpeg gif png)
+  # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

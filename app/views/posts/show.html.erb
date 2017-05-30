@@ -1,0 +1,4 @@
+<%= image_tag @post.image_url %>
+<p><%= @post.description %></p>
+<h5>Posted by <%= user_avatar @user, :small %><%= @user.username %> on <%= @post.created_at %></h5>
+<%= button_to "Delete Image", @post, method: :delete %>
