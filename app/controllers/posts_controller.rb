@@ -24,6 +24,23 @@ class PostsController < ApplicationController
     @user = @post.user
   end
 
+  def edit
+    @post = Post.find(params[:id])
+    @user = @post.user
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @post.description = params[:post][:description]
+    if @post.save
+      flash[:notice] = "Update success"
+    else
+      flash[:error] = "Update failed"
+    end
+    render :show
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @user = @post.user
