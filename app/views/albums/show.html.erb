@@ -1,0 +1,6 @@
+<h1><%= @album.title %></h1>
+<p><%= @album.description %></p>
+<% if @album.user == current_user %>
+  <%= link_to "Edit album", [:edit, @album] %>
+  <%= button_to "Delete album", @album, method: :delete %>
+<% end %>
