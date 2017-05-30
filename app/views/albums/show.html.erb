@@ -1,5 +1,11 @@
 <h1><%= @album.title %></h1>
 <p><%= @album.description %></p>
+
+<h3>Photos</h3>
+<% @album.posts.each do |x| %>
+  <div><%= image_tag x.image_url %></div>
+<% end %>
+
 <% if @album.user == current_user %>
   <%= link_to "Edit album", [:edit, @album] %>
   <%= button_to "Delete album", @album, method: :delete %>
