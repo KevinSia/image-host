@@ -11,9 +11,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process :convert => 'png'
   cloudinary_transformation width: 256, height: 256, crop: :fill
 
-  # def public_id
-  #   return "image-host/avatars/#{model.id}"
-  # end
+  def public_id
+    return "image-host/avatars/#{model.id}"
+  end
 
   # Choose what kind of storage to use for this uploader:
   # storage :file

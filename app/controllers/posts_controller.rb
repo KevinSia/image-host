@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @post.user_id = helpers.current_user.id
     if @post.save!
       flash[:notice] = "post success"
-      render @post
+      redirect_to @post
     else
       flash[:notice] = "post failed"
       render :new
@@ -22,6 +22,19 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @user = @post.user
+    unless @user == helpers.current_user
+      flash[:error] = "ERROR: Not your photo"
+      redirect_to "/posts"
+    else
+      @post.destroy
+      flash[:notice] = "delete successful."
+      redirect_to "/posts"
+    end
   end
 
   private
