@@ -1,0 +1,8 @@
+<h3>Showing <%= @posts.count %> posts</h3>
+<% @posts.each do |x| %>
+  <div>
+    <%= link_to x do %>
+      Image <%= image_tag x.image_url %>
+    <% end %>
+  </div>
+<% end %>

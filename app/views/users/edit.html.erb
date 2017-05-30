@@ -1,6 +1,5 @@
 <%= form_for @user, html: { class: "form-horizontal" } do |f| %>
   <%= user_avatar @user, :large %>
-  <%= f.hidden_field(:avatar) %>
   <%= f.label :avatar %>
   <%= f.file_field :avatar %>
 

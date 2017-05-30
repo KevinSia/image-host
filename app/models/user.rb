@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validate :is_valid_email
 
   has_many :authentications, :dependent => :destroy
+  has_many :posts
 
   enum authentication_type: ["email", "facebook"]
 

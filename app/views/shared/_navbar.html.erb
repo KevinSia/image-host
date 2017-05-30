@@ -8,11 +8,13 @@
    </div>
    <div class="collapse navbar-collapse" id="navbar">
      <ul class="nav navbar-nav">
-       <li><a href="/users">Users</a></li>
+       <li><%= link_to "Users", "/users" %></li>
+       <li><%= link_to "Posts", "/posts" %></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
        <% if signed_in? %>
-         <li><a href="#"><%= user_avatar current_user, :small %></a></li>
+         <li><%= link_to "New post", "/posts/new" %></li>
+         <li><%= link_to current_user do %><%= user_avatar current_user, :small %><% end %></li>
          <li><%= link_to "Sign out", "/sign_out", method: :delete %></li>
        <% else %>
          <li><a href="#" data-toggle="modal" data-target="#modal-sign-up">Sign up</a></li>
