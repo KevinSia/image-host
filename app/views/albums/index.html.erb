@@ -1,0 +1,5 @@
+<% @albums.each do |x| %>
+  <h1><%= link_to x do %><%= x.title %><% end %></h1>
+  <p><%= x.description %></p>
+  <hr>
+<% end %>

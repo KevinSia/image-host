@@ -10,10 +10,12 @@
      <ul class="nav navbar-nav">
        <li><%= link_to "Users", "/users" %></li>
        <li><%= link_to "Posts", "/posts" %></li>
+       <li><%= link_to "Albums", "/albums" %></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
        <% if signed_in? %>
          <li><%= link_to "New post", "/posts/new" %></li>
+         <li><%= link_to "New album", "/albums/new" %></li>
          <li><%= link_to current_user do %><%= user_avatar current_user, :small %><% end %></li>
          <li><%= link_to "Sign out", "/sign_out", method: :delete %></li>
        <% else %>
