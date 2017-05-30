@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(strong_params)
-    @user.avatar = params[:avatar]
     if @user.save
       flash[:notice] = "Account creation success!"
       redirect_to "/sign_in"
@@ -32,6 +31,16 @@ class UsersController < ApplicationController
 
   def update
     @user = helpers.current_user
+    new_avatar = params[:user][:avatar]
+    if new_avatar
+      @user.avatar = new_avatar
+      # TODO for some reason I can't overwite the existing image directly so I have to delete the old one like this
+      # how do I do it directly?
+      if @user.valid?
+        @user.remove_avatar!
+        @user.save
+      end
+    end
     @user.attributes = strong_params
     if @user.save(validate: false)
       flash[:notice] = "update success"

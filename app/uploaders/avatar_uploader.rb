@@ -6,15 +6,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   include Cloudinary::CarrierWave
 
+  process :invalidate => true
+
   process :convert => 'png'
-
-  version :large do
-    cloudinary_transformation width: 256, height: 256, crop: :fill
-  end
-
-  version :small do
-    cloudinary_transformation width: 48, height: 48, crop: :fill
-  end
+  cloudinary_transformation width: 256, height: 256, crop: :fill
 
   def public_id
     return "image-host/avatars/#{model.id}"
@@ -52,9 +47,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_whitelist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
+
+  def content_type_whitelist
+    /image\//
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
