@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @users = @users.search_user(params[:q]) unless params[:q].nil?
   end
 
   def show

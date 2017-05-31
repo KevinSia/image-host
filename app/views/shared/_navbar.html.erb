@@ -11,6 +11,13 @@
        <li><%= link_to "Users", "/users" %></li>
        <li><%= link_to "Posts", "/posts" %></li>
        <li><%= link_to "Albums", "/albums" %></li>
+       <li>
+         <%= form_tag "/users", method: :get do %>
+           <%= label_tag(:q, "Search user:") %>
+           <%= text_field_tag(:q) %>
+           <%= submit_tag("Search") %>
+         <% end %>
+       </li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
        <% if signed_in? %>
