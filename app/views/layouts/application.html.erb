@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ImageHost</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render "shared/head" %>
   </head>
 
   <body>
     <%= render "shared/modals" %>
     <%= render "shared/navbar" %>
-    <%= render "shared/flash"  %>
-    <%= yield %>
+    <div id="content" class="container-fluid">
+      <%= render "shared/flash"  %>
+      <%= yield %>
+    </div>
   </body>
 </html>

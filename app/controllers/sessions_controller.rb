@@ -1,5 +1,10 @@
 class SessionsController < ApplicationController
+  skip_before_action :sign_in_first, only: [:new, :create, :create_from_omniauth]
   skip_before_action :check_for_username, only: [:destroy]
+
+  def new
+
+  end
 
   def create
     user = User.find_by(email: params[:email]).try(:authenticate, params[:password])

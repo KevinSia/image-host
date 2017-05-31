@@ -1,1 +1,39 @@
-<%= render "users/form" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "shared/head" %>
+    <style type="text/css">
+#home-login-form {
+  min-width: 525px;
+  background-color: #FFF;
+  padding: 32px;
+  border-radius: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #CCC;
+}
+#logo {
+  font-family: 'Abril Fatface', cursive;
+  font-size: 72px;
+  text-align: center;
+  padding-bottom: 32px;
+}
+#home-sign-in-button {
+  margin-left: 16px
+}
+    </style>
+  </head>
+  <body>
+    <%= render "shared/modals" %>
+    <div id="home-login-form">
+      <div id="logo">
+        <i class="fa fa-picture-o" aria-hidden="true"></i> Image Host
+      </div>
+      <%= render "users/form" %>
+      <hr>
+      <span>Already have an account? <button id="home-sign-in-button" class="btn btn-default" data-toggle="modal" data-target="#modal-sign-in">Sign in</button></span>
+    </div>
+  </body>
+</html>
