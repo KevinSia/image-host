@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post "sign_up", to: "users#create"
   delete "sign_out", to: "sessions#destroy"
 
-  root "users#index"
+  root "sessions#new"
 
   get "/users/initial_setup", to: "users#initial_setup"
 

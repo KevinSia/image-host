@@ -1,5 +1,14 @@
 class SessionsController < ApplicationController
+  skip_before_action :sign_in_first
   skip_before_action :check_for_username, only: [:destroy]
+
+  def new
+    if helpers.signed_in?
+      redirect_to "/users"
+    else
+      render layout: false
+    end
+  end
 
   def create
     user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
