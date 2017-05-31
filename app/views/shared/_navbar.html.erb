@@ -1,10 +1,10 @@
-<nav class="navbar navbar-default">
+<nav class="navbar">
  <div class="container-fluid">
    <div class="navbar-header">
      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
        <%= icon("bars") %>
      </button>
-     <a class="navbar-brand" href="/">Image Host</a>
+     <a class="navbar-brand" href="/"><i class="fa fa-picture-o" aria-hidden="true"></i> Image Host</a>
    </div>
    <div class="collapse navbar-collapse" id="navbar">
      <ul class="nav navbar-nav">
@@ -16,7 +16,7 @@
        <% if signed_in? %>
          <li><%= link_to "New post", "/posts/new" %></li>
          <li><%= link_to "New album", "/albums/new" %></li>
-         <li><%= link_to current_user do %><%= user_avatar current_user, :small %><% end %></li>
+         <li><%= link_to current_user do %><%= user_avatar current_user, :small, class: "profile-image" %><% end %></li>
          <li><%= link_to "Sign out", "/sign_out", method: :delete %></li>
        <% else %>
          <li><a href="#" data-toggle="modal" data-target="#modal-sign-up">Sign up</a></li>

@@ -1,14 +1,24 @@
-<%= user_avatar @user, :large %>
-<h3><%= @user.full_name %></h3>
-<br>bio: <%= @user.bio || "no bio" %>
-<br>website: <%= @user.website || "no website" %>
-<br>phone: <%= @user.phone || "no phone" %>
-<br>birthday: <%= @user.birthday || "no birthday" %>
+<div class="row">
+  <div class="col-sm-4">
+    <%= user_avatar @user, :large, class: "img-responsive" %>
+  </div>
+  <div class="col-sm-8">
+    <h1><%= @user.full_name %></h1>
+    <h3><%= @user.bio || "No bio set." %></h3>
+    <h5>Website: <%= @user.website || "No website set." %></h5>
+    <h5>Phone: <%= @user.phone || "No phone set." %></h5>
+    <h5>Birthday: <%= @user.birthday || "No birthday set." %></h5>
+    <% if @user == current_user %>
+      <%= link_to "Edit profile", [:edit, @user], class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
 
-<br><% if @user == current_user %>
-  <%= link_to "Edit profile", [:edit, @user] %>
-<% end %>
 <h3>Images</h3>
 <% @user.posts.each do |x| %>
-  <span><%= link_to x do %><%= image_tag x.image_url, width: 100, height: 100 %><% end %></span>
+  <div class="col-sm-6">
+    <%= link_to x do %>
+      <%= cl_image_tag x.image.filename, class: "img-responsive", type: :upload, width: 640, height: 480, crop: :fill %>
+    <% end %>
+  </div>
 <% end %>

@@ -1,15 +1,22 @@
 class UsersController < ApplicationController
+  skip_before_action :sign_in_first, only: [:new, :create]
   skip_before_action :check_for_username, only: [:update]
 
   def new
-    @user = User.new
+    if helpers.signed_in?
+      redirect_to helpers.current_user
+    else
+      @user = User.new
+      render layout: false
+    end
   end
 
   def create
     @user = User.new(strong_params)
     if @user.save
       flash[:notice] = "Account creation success!"
-      redirect_to "/sign_in"
+      session[:user] = @user.id
+      redirect_to "/"
     else
       flash[:error] = @user.errors.messages
       render :new

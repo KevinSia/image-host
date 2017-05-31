@@ -10,16 +10,35 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
- @import "font-awesome-sprockets";
- @import "font-awesome";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
- $dark: #333;
- $gray: #999;
- $white: #FFF;
- $facebookBlue: #3B5998;
+$dark: #444;
+$gray: #999;
+$white: #FFF;
+$facebookBlue: #3B5998;
+// $main: #22c322;
+$main: #444;
+$maxwidth: 960px;
+//
+// generic
+//
+body {
+  max-width: $maxwidth;
+  margin: 0 auto;
+  background: #FAFAFA url("https://www.toptal.com/designers/subtlepatterns/patterns/photography.png") repeat center center;
+  color: $dark;
+  font-size: 16px;
+}
+#content {
+  background-color: #FAFAFA;
+}
 
+//
+// SIGN IN PAGE ELEMENTS
+//
 .sign-in-method-separator {
   height: 1px;
   background-color: $gray;
@@ -42,4 +61,55 @@
   > .fa {
     padding-right: 8px;
   }
+}
+
+//
+// NAVBAR
+//
+.collapse.in, .collapsing {
+  background-color: #EEE
+}
+.navbar {
+  border: none;
+  border-radius: 0;
+  height: 64px;
+
+  background-color: #FAFAFA;
+
+  .navbar-brand {
+    color: $dark;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 32px;
+  }
+
+  .nav > li {
+    &:hover {
+      border-top: 4px solid $main;
+    }
+     > a {
+      height: 64px;
+      padding-top: 21px;
+
+      color: $dark;
+
+      > .profile-image {
+        position: relative;
+        top: -13px;
+      }
+
+      &:hover {
+        color: $main;
+        background-color: transparent;
+        position: relative;
+        top: -4px;
+      }
+    }
+  }
+}
+
+//
+// etc
+//
+.profile-image {
+  border-radius: 100%;
 }

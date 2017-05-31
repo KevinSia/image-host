@@ -3,10 +3,14 @@
 
 <h3>Photos</h3>
 <% @album.posts.each do |x| %>
-  <div><%= image_tag x.image_url %></div>
+  <div class="col-sm-6">
+    <%= link_to x do %>
+      <%= cl_image_tag x.image.filename, class: "img-responsive", type: :upload, width: 640, height: 480, crop: :fill %>
+    <% end %>
+  </div>
 <% end %>
-
+<div class="row"></div>
 <% if @album.user == current_user %>
-  <%= link_to "Edit album", [:edit, @album] %>
-  <%= button_to "Delete album", @album, method: :delete %>
+  <%= link_to "Edit album", [:edit, @album], class: "btn btn-default" %>
+  <%= button_to "Delete album", @album, method: :delete, class: "btn btn-danger" %>
 <% end %>

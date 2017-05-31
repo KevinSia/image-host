@@ -1,8 +1,8 @@
 <h3>Showing <%= @posts.count %> posts</h3>
 <% @posts.each do |x| %>
-  <div>
+  <div class="col-sm-6">
     <%= link_to x do %>
-      Image <%= image_tag x.image_url %>
+      <%= cl_image_tag x.image.filename, class: "img-responsive", type: :upload, width: 640, height: 480, crop: :fill %>
     <% end %>
   </div>
 <% end %>
