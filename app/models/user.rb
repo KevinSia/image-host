@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search_user, against: [:username, :full_name]
+
   has_secure_password validations: false
 
   validates_presence_of :password, if: :validate_password?
