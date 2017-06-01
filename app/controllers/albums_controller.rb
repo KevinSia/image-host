@@ -63,6 +63,7 @@ class AlbumsController < ApplicationController
   def convert_id_array_to_posts
     # convert the array of ids to models
     @selected_posts = params[:album][:posts]
+    return nil if @selected_posts.nil?
     @selected_posts.map! do |x|
     # TODO check if users can still inject another user's id into the selected_posts array?
     # if so fix!
