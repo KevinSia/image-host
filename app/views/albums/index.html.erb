@@ -1,5 +1,8 @@
 <% @albums.each do |x| %>
-  <h1><%= link_to x do %><%= x.title %><% end %></h1>
-  <p><%= x.description %></p>
-  <hr>
+  <div class="col-sm-6">
+    <%= link_to x do %>
+      <h1><%= x.title %></h1>
+      <%= cl_image_tag x.posts.last.image.filename, class: "img-responsive", type: :upload, width: 640, height: 480, crop: :fill unless x.posts.empty? %>
+    <% end %>
+  </div>
 <% end %>
