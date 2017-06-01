@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(strong_params)
-    @album.posts = @selected_posts
+    @album.posts = @selected_posts || []
     @album.user = helpers.current_user
 
     if @album.save
@@ -34,7 +34,7 @@ class AlbumsController < ApplicationController
 
   def update
     @album.update_attributes(strong_params)
-    @album.posts = @selected_posts
+    @album.posts = @selected_posts || []
 
     if @album.save
       flash[:success] = "Album updated successfully!"

@@ -2,7 +2,7 @@
   <div class="col-sm-6">
     <%= link_to x do %>
       <h1><%= x.title %></h1>
-      <%= cl_image_tag x.posts.last.image.filename, class: "img-responsive", type: :upload, width: 640, height: 480, crop: :fill unless x.posts.empty? %>
+      <%= cl_image_tag (x.posts.empty? ? "image-host/assets/empty-album.png" : x.posts.last.image.filename), class: "img-responsive", type: :upload, width: 640, height: 480, crop: :fill %>
     <% end %>
   </div>
 <% end %>

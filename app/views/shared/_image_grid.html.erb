@@ -1,9 +1,13 @@
 <div class="image-grid">
-  <% posts.each do |x| %>
-    <div class="col-sm-6">
-      <%= link_to x do %>
-        <%= cl_image_tag x.image.filename, class: "img-responsive", type: :upload, width: 640, height: 480, crop: :fill %>
-      <% end %>
-    </div>
+  <% if posts.empty? %>
+    <p>No photos.</p>
+  <% else %>
+    <% posts.each do |x| %>
+      <div class="col-sm-6">
+        <%= link_to x do %>
+          <%= cl_image_tag x.image.filename, class: "img-responsive", type: :upload, width: 640, height: 480, crop: :fill %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
