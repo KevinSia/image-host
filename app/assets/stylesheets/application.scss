@@ -40,8 +40,14 @@ textarea {
   max-width: 640px;
   margin: 0 auto;
 }
+.inline-block {
+  display: inline-block;
+}
 #content {
   background-color: #FAFAFA;
+  padding: 16px;
+  box-shadow: 0px 0px 16px rgba(#000, 0.125);
+  border-radius: 16px;
 }
 //
 // 2 column image grid
@@ -112,8 +118,9 @@ textarea {
 }
 .navbar {
   border: none;
-  border-radius: 0;
+  border-radius: 0 0 16px 16px;
   height: 64px;
+  box-shadow: 0px 0px 16px rgba(#000, 0.125);
 
   background-color: #FAFAFA;
 

@@ -3,5 +3,5 @@
 <h5>Posted by <%= user_avatar @user, :small %><%= @user.username %> on <%= @post.created_at %></h5>
 <% if @user == current_user %>
   <%= link_to "Edit Image", [:edit, @post], class: "btn btn-default" %>
-  <%= button_to "Delete Image", @post, method: :delete, class: "btn btn-danger" %>
+  <%= button_to "Delete Image", @post, method: :delete, form_class: "inline-block", class: "btn btn-danger" %>
 <% end %>

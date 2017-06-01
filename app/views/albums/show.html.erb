@@ -7,6 +7,6 @@
 
 <div class="row"></div>
 <% if @album.user == current_user %>
-  <%= link_to "Edit album", [:edit, @album], class: "btn btn-default" %>
-  <%= button_to "Delete album", @album, method: :delete, class: "btn btn-danger" %>
+  <%= link_to "Edit Album", [:edit, @album], class: "btn btn-default" %>
+  <%= button_to "Delete Album", @album, method: :delete, form_class: "inline-block", class: "btn btn-danger" %>
 <% end %>
