@@ -55,7 +55,7 @@ textarea {
 // photo selector
 //
 .photo-selector {
-  font-size: 0;
+  // font-size: 0;
   text-align: center;
 
   > img {
@@ -67,7 +67,10 @@ textarea {
   }
 
   input[type=checkbox] {
-    display: none;
+    // because hiding them bugs out jquery validation
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
   }
 
   input[type=submit] {
