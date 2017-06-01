@@ -12,10 +12,10 @@ class AlbumsController < ApplicationController
     @album.user = helpers.current_user
 
     if @album.save
-      flash[:notice] = "album create successfully"
+      flash[:success] = "Album created successfully!"
       redirect_to @album
     else
-      flash[:error] = "album create failed"
+      flash[:danger] = "Failed to create new album."
       render :new
     end
   end
@@ -37,20 +37,20 @@ class AlbumsController < ApplicationController
     @album.posts = @selected_posts
 
     if @album.save
-      flash[:notice] = "album create successfully"
+      flash[:success] = "Album updated successfully!"
       redirect_to @album
     else
-      flash[:error] = "album create failed"
+      flash[:danger] = "Failed to update album."
       render :new
     end
   end
 
   def destroy
     if @album.destroy
-      flash[:notice] = "album destroyed successfully"
+      flash[:success] = "Album deleted successfully!"
       redirect_to "/"
     else
-      flash[:error] = "album destroyed failed"
+      flash[:danger] = "Album failed to delete."
       redirect_to @album
     end
   end

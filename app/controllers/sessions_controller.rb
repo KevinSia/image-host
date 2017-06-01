@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
     if user
       session[:user] = user.id
-      flash[:notice] = "Login successful"
+      flash[:success] = "Login successful!"
       redirect_to "/"
     else
-      flash[:error] = "Invalid email or password"
+      flash[:danger] = "Invalid email or password."
       render :new
     end
   end
@@ -29,10 +29,10 @@ class SessionsController < ApplicationController
     if authentication.user
       user = authentication.user
       authentication.update_token(auth_hash)
-      flash[:notice] = "Log in successfully"
+      flash[:success] = "Logged in successfully!"
     else
       user = User.create_with_auth_and_hash(authentication, auth_hash)
-      flash[:notice] = "New user created successfully"
+      flash[:success] = "New user created successfully!"
     end
     session[:user] = user.id
     redirect_to "/"

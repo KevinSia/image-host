@@ -14,11 +14,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(strong_params)
     if @user.save
-      flash[:notice] = "Account creation success!"
+      flash[:success] = "New user created successfully!"
       session[:user] = @user.id
       redirect_to "/"
     else
-      flash[:error] = @user.errors.messages
+      flash[:danger] = @user.errors.messages
       render :new
     end
   end
@@ -55,9 +55,9 @@ class UsersController < ApplicationController
     end
     @user.attributes = strong_params
     if @user.save(validate: false)
-      flash[:notice] = "update success"
+      flash[:success] = "Update successful."
     else
-      flash[:alert] = "update failed"
+      flash[:alert] = "Failed to update."
     end
     redirect_to "/"
   end

@@ -7,10 +7,10 @@ class PostsController < ApplicationController
     @post = Post.new(strong_params)
     @post.user_id = helpers.current_user.id
     if @post.save!
-      flash[:notice] = "post success"
+      flash[:success] = "Image posted successfully!"
       redirect_to @post
     else
-      flash[:notice] = "post failed"
+      flash[:success] = "Failed to post image."
       render :new
     end
   end
@@ -34,9 +34,9 @@ class PostsController < ApplicationController
     @user = @post.user
     @post.description = params[:post][:description]
     if @post.save
-      flash[:notice] = "Update success"
+      flash[:success] = "Updated successful!"
     else
-      flash[:error] = "Update failed"
+      flash[:danger] = "Failed to update."
     end
     render :show
   end
@@ -45,11 +45,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     unless @user == helpers.current_user
-      flash[:error] = "ERROR: Not your photo"
+      flash[:danger] = "Failed to delete."
       redirect_to "/posts"
     else
       @post.destroy
-      flash[:notice] = "delete successful."
+      flash[:success] = "Delete successful!"
       redirect_to "/posts"
     end
   end

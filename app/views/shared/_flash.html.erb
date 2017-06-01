@@ -1,5 +1,8 @@
 <div>
   <% flash.each do |x| %>
-    <%= x %>
+    <div class="alert alert-<%= x[0] %> alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong><%= x[1] %></strong>
+    </div>
   <% end %>
 </div>
