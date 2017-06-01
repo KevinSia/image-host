@@ -5,13 +5,3 @@ $(document).on "turbolinks:load", ->
   $(".photo-selector > img").click ->
     $(this).toggleClass("selected")
     $(this).next().click()
-
-  # album form validation
-  $('.album-form').validate
-    rules:
-      'album[posts][]':
-        required: true
-
-    submitHandler: (form) ->
-      # do other things for a valid form
-      form.submit();
