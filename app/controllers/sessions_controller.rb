@@ -14,7 +14,10 @@ class SessionsController < ApplicationController
       redirect_to "/"
     else
       flash[:danger] = "Invalid email or password."
-      render :new
+      respond_to do |format|
+        format.html { }
+        format.js   { }
+      end
     end
   end
 

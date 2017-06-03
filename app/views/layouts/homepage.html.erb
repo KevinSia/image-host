@@ -14,14 +14,16 @@
             <h4 class="modal-title" id="modal-sign-in-label">Sign in</h4>
           </div>
           <div class="modal-body">
+            <div id="login-flash">
+
+            </div>
             <%= render "sessions/form" %>
           </div>
         </div>
       </div>
     </div>
-    
+
     <div id="homepage-content">
-      <%= render "shared/flash"  %>
       <%= yield %>
     </div>
     <script type="text/javascript">
