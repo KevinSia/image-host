@@ -7,10 +7,7 @@ $(document).on "turbolinks:load", ->
         # form.submit()
         return false
 
-  $('.album-form').validate
-    rules:
-      'album[posts][]':
-        required: true
+  $('.album-form').validate()
 
   $('.post-form').validate()
 
