@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
   def sign_in_first
     unless helpers.signed_in?
-      render "sessions/new", layout: false
+      redirect_to "/"
     end
   end
 

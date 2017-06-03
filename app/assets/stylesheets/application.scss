@@ -17,19 +17,21 @@
 
 $dark: #444;
 $gray: #999;
-$white: #FFF;
+$white: #FAFAFA;
 $facebookBlue: #3B5998;
 $emerald: #2ecc71;
 // $main: #22c322;
 $main: #444;
+$minwidth: 320px;
 $maxwidth: 960px;
 //
 // generic
 //
 body {
+  min-width: $minwidth;
   max-width: $maxwidth;
   margin: 0 auto;
-  background: #FAFAFA url("https://www.toptal.com/designers/subtlepatterns/patterns/photography.png") repeat center center;
+  background: $white url("https://www.toptal.com/designers/subtlepatterns/patterns/photography.png") repeat center center;
   color: $dark;
   font-size: 16px;
 }
@@ -43,11 +45,36 @@ textarea {
 .inline-block {
   display: inline-block;
 }
+//
+// layouts
+//
 #content {
-  background-color: #FAFAFA;
+  background-color: $white;
   padding: 16px;
   box-shadow: 0px 0px 16px rgba(#000, 0.125);
   border-radius: 16px;
+}
+
+#homepage-content {
+  background-color: $white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 32px;
+  border-radius: 32px;
+  box-shadow: 0px 0px 16px rgba(#000, 0.125);
+  @media screen and (max-width: 768px) {
+    border-radius: 0;
+    right: -50%;
+  }
+}
+
+.homepage-title {
+  font-family: 'Abril Fatface', cursive;
+  font-size: 48px;
+  padding-bottom: 32px;
+  text-align: center;
 }
 //
 // 2 column image grid
@@ -91,14 +118,16 @@ textarea {
   background-color: $gray;
   clear: both;
   margin: 32px 0;
-  &:before {
+  &.has-or:before {
     content: "OR";
-    margin: 0 auto;
     padding: 0 16px;
     position: relative;
     top: -10px;
     color: $gray;
-    background-color: #FFF;
+    background-color: $white;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: inline-block;
   }
 }
 
@@ -117,12 +146,13 @@ textarea {
   background-color: #EEE
 }
 .navbar {
+  z-index: 9999;
   border: none;
   border-radius: 0 0 16px 16px;
   height: 64px;
   box-shadow: 0px 0px 16px rgba(#000, 0.125);
 
-  background-color: #FAFAFA;
+  background-color: $white;
 
   .navbar-brand {
     color: $dark;
@@ -150,6 +180,7 @@ textarea {
         background-color: transparent;
         position: relative;
         top: -4px;
+        margin-bottom: -4px;
       }
     }
   }

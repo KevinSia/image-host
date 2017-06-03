@@ -1,39 +1,51 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <%= render "shared/head" %>
-    <style type="text/css">
-#home-login-form {
-  min-width: 525px;
-  background-color: #FFF;
-  padding: 32px;
-  border-radius: 32px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 2px solid #CCC;
-}
-#logo {
-  font-family: 'Abril Fatface', cursive;
-  font-size: 72px;
-  text-align: center;
-  padding-bottom: 32px;
-}
-#home-sign-in-button {
-  margin-left: 16px
-}
-    </style>
-  </head>
-  <body>
-    <%= render "shared/modals" %>
-    <div id="home-login-form">
-      <div id="logo">
-        <i class="fa fa-picture-o" aria-hidden="true"></i> Image Host
-      </div>
-      <%= render "users/form" %>
-      <hr>
-      <span>Already have an account? <button id="home-sign-in-button" class="btn btn-default" data-toggle="modal" data-target="#modal-sign-in">Sign in</button></span>
+<div class="homepage-title">
+  <i class="fa fa-picture-o" aria-hidden="true"></i> Image Host
+</div>
+
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <%= button_to "/auth/facebook", class: "btn btn-lg btn-block btn-facebook" do %>
+      <%= icon("facebook", "Sign in with Facebook") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="sign-in-method-separator has-or"></div>
+
+<%= form_for @user, html: {class: "new-user-form form-horizontal"} do |f| %>
+  <div class="form-group row">
+    <%= f.label :full_name, nil, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_field :full_name, class: "form-control", required: true %>
     </div>
-  </body>
-</html>
+  </div>
+  <div class="form-group row">
+    <%= f.label :email, nil, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.email_field :email, class: "form-control", required: true %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :password, nil, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.password_field :password, class: "form-control", required: true, minlength: 8 %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :password_confirmation, nil, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.password_field :password_confirmation, class: "form-control", required: true, minlength: 8 %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-3">
+      <%= f.submit nil, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="sign-in-method-separator"></div>
+
+<div class="">
+  Have an account? <button style="margin-left: 16px;" class="btn btn-primary" data-toggle="modal" data-target="#modal-sign-in">Sign in</button>
+</div>

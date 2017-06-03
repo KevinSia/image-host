@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "shared/head" %>
+  </head>
+
+  <body>
+    <!-- SIGN IN MODAL -->
+    <div class="modal fade" id="modal-sign-in" tabindex="-1" role="dialog" aria-labelledby="modal-sign-in-label">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modal-sign-in-label">Sign in</h4>
+          </div>
+          <div class="modal-body">
+            <%= render "sessions/form" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="homepage-content">
+      <%= render "shared/flash"  %>
+      <%= yield %>
+    </div>
+    <script type="text/javascript">
+      $(function() {
+        // because I use position: absolute and percentages to position #homepage-content,
+        // it could go off-screen if the browser window is too short.
+        // this function fixes that.
+        function setMinTop() {
+          var content = $("#homepage-content")
+          var height = content.outerHeight();
+          if(height > $(window).height()) {
+            content.css({
+              top: "0",
+              transform: "translate(-50%, 0%)"
+            });
+          } else {
+            content.css({
+              top: "50%",
+              transform: "translate(-50%, -50%)"
+            });
+          }
+        }
+        setMinTop();
+        $(window).resize(setMinTop);
+      })
+    </script>
+  </body>
+</html>

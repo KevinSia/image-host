@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       redirect_to helpers.current_user
     else
       @user = User.new
-      render layout: false
+      render layout: "homepage"
     end
   end
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @users = @users.search_user(params[:q]) unless params[:q].nil?
     respond_to do |format|
       format.html { }
-      format.js   { render layout: false }
+      format.js   { }
     end
   end
 

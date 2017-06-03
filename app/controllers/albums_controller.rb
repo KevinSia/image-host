@@ -65,13 +65,11 @@ class AlbumsController < ApplicationController
     @selected_posts = params[:album][:posts]
     return nil if @selected_posts.nil?
     @selected_posts.map! do |x|
-    # TODO check if users can still inject another user's id into the selected_posts array?
-    # if so fix!
       Post.find(x)
     end
   end
 
   def strong_params
-    params.require(:album).permit(:title, :description, posts: [])
+    params.require(:album).permit(:title, :description)
   end
 end
