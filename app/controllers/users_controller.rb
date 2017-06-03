@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @users = @users.search_user(params[:q]) unless params[:q].nil?
+    @users = @users.search_user(params[:q]) unless params[:q].nil? || params[:q].empty?
     respond_to do |format|
       format.html { }
       format.js   { }
