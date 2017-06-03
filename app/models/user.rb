@@ -20,6 +20,14 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  def replace_avatar(new_avatar)
+    self.avatar = new_avatar
+    if self.valid?
+      self.remove_avatar!
+      self.save
+    end
+  end
+
   def validate_password?
     self.authentication_type == "email"
   end

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(strong_params)
-    @post.user_id = helpers.current_user.id
+    @post.user = helpers.current_user
     if @post.save!
       flash[:success] = "Image posted successfully!"
       redirect_to @post
